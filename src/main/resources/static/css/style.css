@@ -1,8 +1,7 @@
 @font-face {
-  font-family: 'Roboto Slab';
+  font-family: 'Arial, Helvetica, sans-serif';
   font-style: normal;
   font-weight: 400;
-  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'), url(http://fonts.gstatic.com/s/robotoslab/v7/BngMUXZYTXPIvIBgJJSb6ufN5qA.ttf) format('truetype');
 }
 body {
   background: #000;
@@ -24,7 +23,6 @@ a {
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  font-family: 'Roboto Slab', serif;
   font-size: 24px;
   line-height: 26px;
   text-align: center;
