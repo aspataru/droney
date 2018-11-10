@@ -5,30 +5,37 @@
     <meta charset="UTF-8">
     <title>Responsive YouTube video background</title>
 
-
     <link rel="stylesheet" href="css/style.css">
-
 
 </head>
 
 <body>
 
-<div class="cover">
-    <div class="hi">Hi<br><br> Click <span>here</span> to <em>un</em>mute & <span>here</span> to see another vid (<em>0</em>
-        of <em>0</em>).
+    <div class="tv">
+        <div class="screen mute" id="tv"></div>
     </div>
-</div>
-<div class="tv">
-    <div class="screen mute" id="tv"></div>
-</div>
-<script
-	src="https://code.jquery.com/jquery-2.2.4.min.js"
-	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-	crossorigin="anonymous"></script>
 
-<script src="js/index.js"></script>
+    <div class="full-overlay">
+    </div>
+
+    <button class="ontop" onclick="toggleOverlay()">
+        INFO
+    </button>
+
+    <div id="overlay" class="cover">
+        <div class="hi">
+            Click <span>here</span> to <em>un</em>mute & <span>here</span> to see another vid (<em>0</em>
+            of <em>0</em>).
+        </div>
+    </div>
+
 
 
 </body>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+
+<script src="js/index.js"></script>
 
 </html>
