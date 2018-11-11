@@ -5,8 +5,8 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var tv,
   playerDefaults = { autoplay: 0, autohide: 1, modestbranding: 0, rel: 0, showinfo: 0, controls: 0, disablekb: 1, enablejsapi: 0, iv_load_policy: 3 };
 var vid = [
-  { 'videoId': 'm2Xw8Fg4Dwg', 'startSeconds': 0, 'endSeconds': 10, 'suggestedQuality': 'hd540' }
-  // {'videoId': '9ge5PzHSS0Y', 'startSeconds': 465, 'endSeconds': 657, 'suggestedQuality': 'hd720'},
+  { 'videoId': 'm2Xw8Fg4Dwg', 'startSeconds': 0, 'endSeconds': 10, 'suggestedQuality': 'hd540' },
+  {'videoId': 'QvHUVAGBct4', 'startSeconds': 90, 'endSeconds': 100, 'suggestedQuality': 'hd540'}
   // {'videoId': 'OWsCt7B-KWs', 'startSeconds': 0, 'endSeconds': 240, 'suggestedQuality': 'hd720'},
   // {'videoId': 'qMR-mPlyduE', 'startSeconds': 19, 'endSeconds': 241, 'suggestedQuality': 'hd720'}
 ],
@@ -38,6 +38,7 @@ function onPlayerStateChange(e) {
     tv.loadVideoById(vid[currVid]);
     tv.seekTo(vid[currVid].startSeconds);
   }
+  // playback paused
   else if (e.data === 2) {
     $('#tv').removeClass('active');
     if (currVid === vid.length - 1) {
@@ -91,4 +92,9 @@ function toggleOverlay() {
   }
   document.getElementById("overlay").style.display = displayValue;
   overlayShowing = !overlayShowing;
+}
+
+function nextVideo() {
+  // hack :)
+  tv.pauseVideo();
 }
