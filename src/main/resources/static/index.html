@@ -6,11 +6,9 @@
     <title>Responsive YouTube video background</title>
 
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
-
     <div class="tv">
         <div class="screen mute" id="tv"></div>
     </div>
@@ -18,22 +16,10 @@
     <div class="full-overlay">
     </div>
 
-    <button class="next btn" onclick="nextVideo()">
-        next
-    </button>
-    <button class="info btn" onclick="toggleOverlay()">
-        info
-    </button>
-
     <div id="overlay" class="cover">
-        <div class="hi">
-            Click <span>here</span> to <em>un</em>mute & <span>here</span> to see another vid (<em>0</em>
-            of <em>0</em>).
-        </div>
+        <div class="arrow right" onclick="nextVideo()"></div>
+        <div class="description"></div>
     </div>
-
-
-
 </body>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="

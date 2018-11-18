@@ -1,9 +1,7 @@
 body {
   background: #000;
 }
-a {
-  color: #ff0;
-}
+
 .full-overlay {
   position: absolute;
   top: 0;
@@ -22,29 +20,24 @@ a {
   width: 100%;
   height: 15%;
   background: darkgray;
-  opacity: 0.8;
+  opacity: 0.1;
 }
-.cover .hi {
-  position: absolute;
-  top: 35%;
-  right: 5%;
-  /* transform: translate(-50%, -50%); */
-  /* color: #fff; */
+.cover:hover {
+  opacity: 1;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+ .cover .description {
+   position: inherit;
+  top: 50%;
+  left: 5%;
   font-size: 10px;
   line-height: 12px;
-  text-align: right;
+  text-align: left;
 }
-.cover .hi span {
-  color: #ff0;
-  cursor: pointer;
-  text-decoration: underline;
-}
-.cover .hi em {
-  font-style: normal;
-}
-.cover .hi em.hidden {
-  display: none;
-}
+
 .tv {
   position: absolute;
   top: 0;
@@ -70,40 +63,38 @@ a {
 }
 
 /* new */
-.info {
+.arrow {
+  position: inherit;
+  top: 50%;
+  width: 3vmin;
+  height: 3vmin;
+  background: transparent;
+  border-top: 1vmin solid white;
+  border-right: 1vmin solid white;
+  box-shadow: 0 0 0 lightgray;
+  transition: all 200ms ease;
+}
+.arrow.left {
+  left: 0;
+  -webkit-transform: translate3d(0, -50%, 0) rotate(-135deg);
+          transform: translate3d(0, -50%, 0) rotate(-135deg);
+}
+.arrow.right {
+  right: 5%;
+  -webkit-transform: translate3d(0, -50%, 0) rotate(45deg);
+          transform: translate3d(0, -50%, 0) rotate(45deg);
+}
+.arrow:hover {
+  border-color: black;
+  box-shadow: 0.5vmin -0.5vmin 0 white;
+}
+.arrow:before {
+  content: '';
   position: absolute;
-  top: 86%;
-  right: 20%;
-  z-index: 4;
-  /* width: 100%;
-  height: 15%; */
-  background: darkgray;
-  opacity: 0.9;
-}
-
-.next {
-  position: absolute;
-  top: 86%;
-  right: 10%;
-  z-index: 4;
-  /* width: 100%;
-  height: 15%; */
-  background: darkgray;
-  opacity: 0.9;
-}
-
-
-.btn {
-  display: inline-block;
-  font-weight: bold;
-  padding: 0.25em 0.5em;
-  text-decoration: none;
-  color: black;
-  background: #ECECEC;
-  border-radius: 0 15px 15px 0;
-  transition: .4s;
-}
-
-.btn:hover {
-  background: darkgray;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-40%, -60%) rotate(45deg);
+          transform: translate(-40%, -60%) rotate(45deg);
+  width: 200%;
+  height: 200%;
 }
