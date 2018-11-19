@@ -3,19 +3,15 @@ tag.src = 'https://www.youtube.com/player_api';
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var tv,
-  playerDefaults = { autoplay: 0, autohide: 1, modestbranding: 0, rel: 0, showinfo: 0, controls: 0, disablekb: 1, enablejsapi: 0, iv_load_policy: 3 };
+  playerDefaults = { autoplay: 0, autohide: 1, modestbranding: 1, rel: 0, showinfo: 0, controls: 0, disablekb: 1, enablejsapi: 0, iv_load_policy: 3 };
 var vid = [
-  { 'videoId': 'm2Xw8Fg4Dwg', 'startSeconds': 0, 'endSeconds': 10, 'suggestedQuality': 'hd540', 'description': 'Cooking'},
-  {'videoId': 'QvHUVAGBct4', 'startSeconds': 90, 'endSeconds': 100, 'suggestedQuality': 'hd540', 'description': 'Nara'}
-  // {'videoId': 'OWsCt7B-KWs', 'startSeconds': 0, 'endSeconds': 240, 'suggestedQuality': 'hd720'},
-  // {'videoId': 'qMR-mPlyduE', 'startSeconds': 19, 'endSeconds': 241, 'suggestedQuality': 'hd720'}
+  {'videoId': 'sgKchpT8-Ng', 'startSeconds': 5, 'endSeconds': 30, 'suggestedQuality': 'hd720', 'description': 'Satigny'},
+  {'videoId': '39Vl-I_QtQ4', 'startSeconds': 5, 'endSeconds': 29, 'suggestedQuality': 'hd720', 'description': 'Veyrier'},
+  {'videoId': 'ic6LaxGtP1c', 'startSeconds': 6, 'endSeconds': 31, 'suggestedQuality': 'hd720', 'description': 'Saleve'},
+  {'videoId': 'MQ_oJ7QQPoM', 'startSeconds': 4, 'endSeconds': 23, 'suggestedQuality': 'hd720', 'description': 'Saleve'},
+  {'videoId': 'ic6LaxGtP1c', 'startSeconds': 4, 'endSeconds': 30, 'suggestedQuality': 'hd720', 'description': 'Saleve'}
 ],
-  randomVid = Math.floor(Math.random() * vid.length),
-  currVid = randomVid;
-
-var overlayShowing = false;
-
-$('.hi em:last-of-type').html(vid.length);
+currVid = 0;
 
 function onYouTubePlayerAPIReady() {
   tv = new YT.Player('tv', { events: { 'onReady': onPlayerReady, 'onStateChange': onPlayerStateChange }, playerVars: playerDefaults });
@@ -34,14 +30,8 @@ function onPlayerStateChange(e) {
     $('#tv').addClass('active');
     $('.hi em:nth-of-type(2)').html(currVid + 1);
   }
-   // state is playback finished 
-  else if (e.data === 0) {
-    $('#tv').removeClass('active');
-    tv.loadVideoById(vid[currVid]);
-    tv.seekTo(vid[currVid].startSeconds);
-  }
-  // playback paused
-  else if (e.data === 2) {
+   // state is playback finished or paused
+  else if (e.data === 0 || e.data == 2) {
     $('#tv').removeClass('active');
     if (currVid === vid.length - 1) {
       currVid = 0;
@@ -49,12 +39,10 @@ function onPlayerStateChange(e) {
       currVid++;
     }
     tv.loadVideoById(vid[currVid]);
-    tv.seekTo(vid[currVid].startSeconds);
   }
 }
 
 function vidRescale() {
-
   var w = $(window).width() + 200,
     h = $(window).height() + 200;
 
@@ -71,31 +59,7 @@ $(window).on('load resize', function () {
   vidRescale();
 });
 
-$('.hi span:first-of-type').on('click', function () {
-  $('#tv').toggleClass('mute');
-  $('.hi em:first-of-type').toggleClass('hidden');
-  if ($('#tv').hasClass('mute')) {
-    tv.mute();
-  } else {
-    tv.unMute();
-  }
-});
-
-$('.hi span:last-of-type').on('click', function () {
-  $('.hi em:nth-of-type(2)').html('~');
-  tv.pauseVideo();
-});
-
 // new
-function toggleOverlay() {
-  var displayValue = "none";
-  if (overlayShowing) {
-    displayValue = "block";
-  }
-  document.getElementById("overlay").style.display = displayValue;
-  overlayShowing = !overlayShowing;
-}
-
 function nextVideo() {
   // hack :)
   tv.pauseVideo();
