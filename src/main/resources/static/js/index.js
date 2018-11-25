@@ -5,11 +5,24 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var tv,
   playerDefaults = { autoplay: 0, autohide: 1, modestbranding: 1, rel: 0, showinfo: 0, controls: 0, disablekb: 1, enablejsapi: 0, iv_load_policy: 3 };
 var vid = [
-  {'videoId': 'sgKchpT8-Ng', 'startSeconds': 5, 'endSeconds': 30, 'suggestedQuality': 'hd720', 'description': 'Satigny'},
   {'videoId': '39Vl-I_QtQ4', 'startSeconds': 5, 'endSeconds': 29, 'suggestedQuality': 'hd720', 'description': 'Veyrier'},
-  {'videoId': 'ic6LaxGtP1c', 'startSeconds': 6, 'endSeconds': 31, 'suggestedQuality': 'hd720', 'description': 'Saleve'},
-  {'videoId': 'MQ_oJ7QQPoM', 'startSeconds': 4, 'endSeconds': 23, 'suggestedQuality': 'hd720', 'description': 'Saleve'},
-  {'videoId': 'ic6LaxGtP1c', 'startSeconds': 4, 'endSeconds': 30, 'suggestedQuality': 'hd720', 'description': 'Saleve'}
+  {'videoId': '6_1Wy7976EY', 'startSeconds': 3, 'endSeconds': 29, 'suggestedQuality': 'hd720', 'description': 'Veyrier'},
+  {'videoId': 'ic6LaxGtP1c', 'startSeconds': 6, 'endSeconds': 31, 'suggestedQuality': 'hd720', 'description': 'Salève'},
+  {'videoId': 'MQ_oJ7QQPoM', 'startSeconds': 4, 'endSeconds': 23, 'suggestedQuality': 'hd720', 'description': 'Salève'},
+  {'videoId': 'ic6LaxGtP1c', 'startSeconds': 4, 'endSeconds': 30, 'suggestedQuality': 'hd720', 'description': 'Salève'},
+  {'videoId': 'sgKchpT8-Ng', 'startSeconds': 5, 'endSeconds': 30, 'suggestedQuality': 'hd720', 'description': 'Satigny'},
+  {'videoId': 'Z3t-rWEH2ik', 'startSeconds': 20, 'endSeconds': 60, 'suggestedQuality': 'hd720', 'description': 'Gy'},
+  {'videoId': 'K6lGuJZer94', 'startSeconds': 5, 'endSeconds': 33, 'suggestedQuality': 'hd720', 'description': 'St-Cergue'},
+  {'videoId': 'c5yR_EtI7PA', 'startSeconds': 7, 'endSeconds': 34, 'suggestedQuality': 'hd720', 'description': 'Sixt-Fer-à-Cheval'},
+  {'videoId': 'aKy56Vn_iBI', 'startSeconds': 3, 'endSeconds': 33, 'suggestedQuality': 'hd720', 'description': 'Sixt-Fer-à-Cheval'},
+  {'videoId': 'S9RhDjvPwPs', 'startSeconds': 5, 'endSeconds': 22, 'suggestedQuality': 'hd720', 'description': 'Creux du Van'},
+  {'videoId': 'ihEEHIN7a8', 'startSeconds': 5, 'endSeconds': 33, 'suggestedQuality': 'hd720', 'description': 'L\'Abbaye'},
+  {'videoId': 'tdLKRwYlDVw', 'startSeconds': 8, 'endSeconds': 34, 'suggestedQuality': 'hd720', 'description': 'Rougemont'},
+  {'videoId': 'msm9jgbLmKc', 'startSeconds': 4, 'endSeconds': 27, 'suggestedQuality': 'hd720', 'description': 'Rougemont'},
+  {'videoId': 'AoEo0c4XSBs', 'startSeconds': 2, 'endSeconds': 33, 'suggestedQuality': 'hd720', 'description': 'Moléson'},
+  {'videoId': '79XUSbZX0Wg', 'startSeconds': 30, 'endSeconds': 90, 'suggestedQuality': 'hd720', 'description': 'Val d\'Illiez'},
+  {'videoId': 'm0_LGC1sLeQ', 'startSeconds': 2, 'endSeconds': 56, 'suggestedQuality': 'hd720', 'description': 'Folegandros'},
+  {'videoId': 'O_uVv0tFN_8', 'startSeconds': 5, 'endSeconds': 40, 'suggestedQuality': 'hd720', 'description': 'Folegandros'}
 ],
 currVid = 0;
 
