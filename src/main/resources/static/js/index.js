@@ -16,7 +16,7 @@ var vid = [
   {'videoId': 'c5yR_EtI7PA', 'startSeconds': 7, 'endSeconds': 34, 'suggestedQuality': 'hd720', 'description': 'Sixt-Fer-à-Cheval'},
   {'videoId': 'aKy56Vn_iBI', 'startSeconds': 3, 'endSeconds': 33, 'suggestedQuality': 'hd720', 'description': 'Sixt-Fer-à-Cheval'},
   {'videoId': 'S9RhDjvPwPs', 'startSeconds': 5, 'endSeconds': 22, 'suggestedQuality': 'hd720', 'description': 'Creux du Van'},
-  {'videoId': 'ihEEHIN7a8', 'startSeconds': 5, 'endSeconds': 33, 'suggestedQuality': 'hd720', 'description': 'L\'Abbaye'},
+  {'videoId': '_ihEEHIN7a8', 'startSeconds': 5, 'endSeconds': 33, 'suggestedQuality': 'hd720', 'description': 'L\'Abbaye'},
   {'videoId': 'tdLKRwYlDVw', 'startSeconds': 8, 'endSeconds': 34, 'suggestedQuality': 'hd720', 'description': 'Rougemont'},
   {'videoId': 'msm9jgbLmKc', 'startSeconds': 4, 'endSeconds': 27, 'suggestedQuality': 'hd720', 'description': 'Rougemont'},
   {'videoId': 'AoEo0c4XSBs', 'startSeconds': 2, 'endSeconds': 33, 'suggestedQuality': 'hd720', 'description': 'Moléson'},
@@ -25,6 +25,7 @@ var vid = [
   {'videoId': 'O_uVv0tFN_8', 'startSeconds': 5, 'endSeconds': 40, 'suggestedQuality': 'hd720', 'description': 'Folegandros'}
 ],
 currVid = 0;
+var buffering = false;
 
 function onYouTubePlayerAPIReady() {
   tv = new YT.Player('tv', { events: { 'onReady': onPlayerReady, 'onStateChange': onPlayerStateChange }, playerVars: playerDefaults });
@@ -35,16 +36,23 @@ function onPlayerReady() {
   tv.mute();
 }
 
+// Youtube player states
+var ENDED = 0, PLAYING = 1, PAUSED = 2, BUFFERING = 3, CUED = 5;
+
 function onPlayerStateChange(e) {
+  
   // update description
   $('.description').html(vid[currVid].description);
   // state is playing
-  if (e.data === 1) {
+  if (e.data === PLAYING) {
+    hideBuffering();
     $('#tv').addClass('active');
-    $('.hi em:nth-of-type(2)').html(currVid + 1);
   }
-   // state is playback finished or paused
-  else if (e.data === 0 || e.data == 2) {
+  else if (e.data === BUFFERING) {
+    showBuffering();
+  }
+  else if (e.data === ENDED || e.data == PAUSED) {
+    hideBuffering();
     $('#tv').removeClass('active');
     if (currVid === vid.length - 1) {
       currVid = 0;
@@ -74,6 +82,23 @@ $(window).on('load resize', function () {
 
 // new
 function nextVideo() {
+  if (buffering) {
+    return;
+  }
   // hack :)
   tv.pauseVideo();
+}
+
+function showBuffering() {
+  buffering = true;
+  $('.arrow').addClass('border-red');
+  $('.arrow').removeClass('arrowhover');
+  
+}
+
+function hideBuffering() {
+  buffering = false;
+  $('.arrow').removeClass('border-red');
+  $('.arrow').addClass('arrowhover');
+
 }

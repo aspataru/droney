@@ -85,7 +85,7 @@ body {
   -webkit-transform: translate3d(0, -50%, 0) rotate(45deg);
           transform: translate3d(0, -50%, 0) rotate(45deg);
 }
-.arrow:hover {
+.arrowhover:hover {
   border-color: black;
   box-shadow: 0.5vmin -0.5vmin 0 white;
 }
@@ -98,4 +98,7 @@ body {
           transform: translate(-40%, -60%) rotate(45deg);
   width: 200%;
   height: 200%;
+}
+.border-red {
+  border-color: red;
 }
