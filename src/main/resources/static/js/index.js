@@ -1,34 +1,31 @@
-var tag = document.createElement('script');
-tag.src = 'https://www.youtube.com/player_api';
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var tv,
   playerDefaults = { autoplay: 0, autohide: 1, modestbranding: 1, rel: 0, showinfo: 0, controls: 0, disablekb: 1, enablejsapi: 0, iv_load_policy: 3 };
 var vid = [
-  {'videoId': '39Vl-I_QtQ4', 'startSeconds': 5, 'endSeconds': 29, 'suggestedQuality': 'hd720', 'description': 'Veyrier'},
-  {'videoId': '6_1Wy7976EY', 'startSeconds': 3, 'endSeconds': 29, 'suggestedQuality': 'hd720', 'description': 'Veyrier'},
-  {'videoId': 'ic6LaxGtP1c', 'startSeconds': 6, 'endSeconds': 31, 'suggestedQuality': 'hd720', 'description': 'Salève'},
-  {'videoId': 'MQ_oJ7QQPoM', 'startSeconds': 4, 'endSeconds': 23, 'suggestedQuality': 'hd720', 'description': 'Salève'},
-  {'videoId': 'FADpoZlJJOE', 'startSeconds': 4, 'endSeconds': 30, 'suggestedQuality': 'hd720', 'description': 'Salève'},
-  {'videoId': 'sgKchpT8-Ng', 'startSeconds': 5, 'endSeconds': 30, 'suggestedQuality': 'hd720', 'description': 'Satigny'},
-  {'videoId': 'Z3t-rWEH2ik', 'startSeconds': 20, 'endSeconds': 60, 'suggestedQuality': 'hd720', 'description': 'Gy'},
-  {'videoId': 'K6lGuJZer94', 'startSeconds': 5, 'endSeconds': 33, 'suggestedQuality': 'hd720', 'description': 'St-Cergue'},
-  {'videoId': 'c5yR_EtI7PA', 'startSeconds': 7, 'endSeconds': 34, 'suggestedQuality': 'hd720', 'description': 'Sixt-Fer-à-Cheval'},
-  {'videoId': 'aKy56Vn_iBI', 'startSeconds': 3, 'endSeconds': 33, 'suggestedQuality': 'hd720', 'description': 'Sixt-Fer-à-Cheval'},
-  {'videoId': 'S9RhDjvPwPs', 'startSeconds': 5, 'endSeconds': 22, 'suggestedQuality': 'hd720', 'description': 'Creux du Van'},
-  {'videoId': '_ihEEHIN7a8', 'startSeconds': 5, 'endSeconds': 33, 'suggestedQuality': 'hd720', 'description': 'L\'Abbaye'},
-  {'videoId': 'tdLKRwYlDVw', 'startSeconds': 8, 'endSeconds': 34, 'suggestedQuality': 'hd720', 'description': 'Rougemont'},
-  {'videoId': 'msm9jgbLmKc', 'startSeconds': 4, 'endSeconds': 27, 'suggestedQuality': 'hd720', 'description': 'Rougemont'},
-  {'videoId': 'AoEo0c4XSBs', 'startSeconds': 2, 'endSeconds': 33, 'suggestedQuality': 'hd720', 'description': 'Moléson'},
-  {'videoId': '79XUSbZX0Wg', 'startSeconds': 30, 'endSeconds': 90, 'suggestedQuality': 'hd720', 'description': 'Val d\'Illiez'},
-  {'videoId': 'm0_LGC1sLeQ', 'startSeconds': 2, 'endSeconds': 56, 'suggestedQuality': 'hd720', 'description': 'Folegandros'},
-  {'videoId': 'O_uVv0tFN_8', 'startSeconds': 5, 'endSeconds': 40, 'suggestedQuality': 'hd720', 'description': 'Folegandros'}
-],
-currVid = 0;
+  // Have a default video in the list while fetching the whole list
+  { 'videoId': '39Vl-I_QtQ4', 'startSeconds': 5, 'endSeconds': 29, 'suggestedQuality': 'hd720', 'title': 'Loading full video list' }
+];
+var currVid = 0;
 var buffering = false;
+
+$(window).on('load', function () {
+  retrieveAndSetVideoList();
+  loadYoutubeAPI();
+});
+
+$(window).on('resize', function () {
+  vidRescale();
+});
+
+function loadYoutubeAPI() {
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/player_api';
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
 
 function onYouTubePlayerAPIReady() {
   tv = new YT.Player('tv', { events: { 'onReady': onPlayerReady, 'onStateChange': onPlayerStateChange }, playerVars: playerDefaults });
+  vidRescale();
 }
 
 function onPlayerReady() {
@@ -40,9 +37,8 @@ function onPlayerReady() {
 var ENDED = 0, PLAYING = 1, PAUSED = 2, BUFFERING = 3, CUED = 5;
 
 function onPlayerStateChange(e) {
-  
-  // update description
-  $('.description').html(vid[currVid].description);
+  updateVideoData();
+
   // state is playing
   if (e.data === PLAYING) {
     hideBuffering();
@@ -63,6 +59,20 @@ function onPlayerStateChange(e) {
   }
 }
 
+function updateVideoData() {
+  let description = vid[currVid].title
+    + ", on: " + vid[currVid].flight.dateAndTime.substring(0, 16)
+    + ", avg height(m): " + vid[currVid].flight.averageHeightInMeters
+    + ", filmed on: " + vid[currVid].flight.equipment;
+  // TODO remove 
+  if (currVid != 0) {
+    description = vid[currVid].title;
+  }
+  $('.description .descriptionLink').html(description);
+  let a = document.getElementById('mapLink');
+  a.href = vid[currVid].flight.locationLink
+}
+
 function vidRescale() {
   var w = $(window).width() + 200,
     h = $(window).height() + 200;
@@ -76,11 +86,6 @@ function vidRescale() {
   }
 }
 
-$(window).on('load resize', function () {
-  vidRescale();
-});
-
-// new
 function nextVideo() {
   if (buffering) {
     return;
@@ -93,12 +98,26 @@ function showBuffering() {
   buffering = true;
   $('.arrow').addClass('border-red');
   $('.arrow').removeClass('arrowhover');
-  
 }
 
 function hideBuffering() {
   buffering = false;
   $('.arrow').removeClass('border-red');
   $('.arrow').addClass('arrowhover');
+}
 
+function retrieveAndSetVideoList() {
+  const Http = new XMLHttpRequest();
+  const url = window.location.href + "/videos";
+  // DEBUG: when loading this page as a static resource, window.location.href is empty
+  // const url = "http://localhost:8080/videos";
+  Http.open("GET", url);
+  Http.send();
+  Http.onreadystatechange = (e) => {
+    json = Http.responseText;
+    if (json != "") {
+      vid = JSON.parse(json);
+      console.info("Loaded " + vid.length + " videos!");
+    }
+  }
 }

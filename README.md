@@ -9,3 +9,6 @@
  ```
 ### thanks
 https://codepen.io/ccrch/pen/GgPLVW
+
+### issues
+1. list of videos is loaded twice

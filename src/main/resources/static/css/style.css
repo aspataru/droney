@@ -39,6 +39,10 @@ body {
   text-align: left;
 }
 
+#mapLink {
+  text-decoration: none;
+}
+
 .tv {
   position: absolute;
   top: 0;
@@ -63,7 +67,6 @@ body {
   opacity: 1;
 }
 
-/* new */
 .arrow {
   position: inherit;
   top: 50%;
