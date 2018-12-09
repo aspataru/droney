@@ -9,7 +9,7 @@ var vid = [
   {'videoId': '6_1Wy7976EY', 'startSeconds': 3, 'endSeconds': 29, 'suggestedQuality': 'hd720', 'description': 'Veyrier'},
   {'videoId': 'ic6LaxGtP1c', 'startSeconds': 6, 'endSeconds': 31, 'suggestedQuality': 'hd720', 'description': 'Salève'},
   {'videoId': 'MQ_oJ7QQPoM', 'startSeconds': 4, 'endSeconds': 23, 'suggestedQuality': 'hd720', 'description': 'Salève'},
-  {'videoId': 'ic6LaxGtP1c', 'startSeconds': 4, 'endSeconds': 30, 'suggestedQuality': 'hd720', 'description': 'Salève'},
+  {'videoId': 'FADpoZlJJOE', 'startSeconds': 4, 'endSeconds': 30, 'suggestedQuality': 'hd720', 'description': 'Salève'},
   {'videoId': 'sgKchpT8-Ng', 'startSeconds': 5, 'endSeconds': 30, 'suggestedQuality': 'hd720', 'description': 'Satigny'},
   {'videoId': 'Z3t-rWEH2ik', 'startSeconds': 20, 'endSeconds': 60, 'suggestedQuality': 'hd720', 'description': 'Gy'},
   {'videoId': 'K6lGuJZer94', 'startSeconds': 5, 'endSeconds': 33, 'suggestedQuality': 'hd720', 'description': 'St-Cergue'},
