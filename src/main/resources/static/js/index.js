@@ -29,32 +29,54 @@ function onYouTubePlayerAPIReady() {
 }
 
 function onPlayerReady() {
+  console.info("Showing flight #" + currVid);
   tv.loadVideoById(vid[currVid]);
   tv.mute();
 }
 
 // Youtube player states
 var ENDED = 0, PLAYING = 1, PAUSED = 2, BUFFERING = 3, CUED = 5;
+// it seems that the YT player sends ENDED events without actually going through playing...
+// adding this counter to make sure we don't take these duplicates into account and skip videos
+let endedWithoutPlaying = 0;
 
 function onPlayerStateChange(e) {
-  updateVideoData();
-
-  // state is playing
+  if (e.data != ENDED && e.data != PLAYING && e.data != PAUSED && e.data != BUFFERING) {
+    // nothing to do for unknown events
+    return;
+  }
   if (e.data === PLAYING) {
-    hideBuffering();
+    endedWithoutPlaying = 0;
+    updateVideoData();
     $('#tv').addClass('active');
+    hideBuffering();
   }
   else if (e.data === BUFFERING) {
     showBuffering();
   }
-  else if (e.data === ENDED || e.data == PAUSED) {
-    hideBuffering();
+  else if (e.data === ENDED) {
+    if (++endedWithoutPlaying > 1) {
+      return;
+    }
     $('#tv').removeClass('active');
+    hideBuffering();
     if (currVid === vid.length - 1) {
       currVid = 0;
     } else {
       currVid++;
     }
+    console.info("Showing flight #" + currVid);
+    tv.loadVideoById(vid[currVid]);
+  }
+  else if (e.data == PAUSED) {
+    $('#tv').removeClass('active');
+    hideBuffering();
+    if (currVid === vid.length - 1) {
+      currVid = 0;
+    } else {
+      currVid++;
+    }
+    console.info("Showing flight #" + currVid);
     tv.loadVideoById(vid[currVid]);
   }
 }
@@ -64,7 +86,7 @@ function updateVideoData() {
     + ", on: " + vid[currVid].flight.dateAndTime.substring(0, 16)
     + ", avg height(m): " + vid[currVid].flight.averageHeightInMeters
     + ", filmed on: " + vid[currVid].flight.equipment;
-    
+
   $('.description .descriptionLink').html(description);
   let a = document.getElementById('mapLink');
   a.href = vid[currVid].flight.locationLink
