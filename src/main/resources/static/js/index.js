@@ -64,10 +64,7 @@ function updateVideoData() {
     + ", on: " + vid[currVid].flight.dateAndTime.substring(0, 16)
     + ", avg height(m): " + vid[currVid].flight.averageHeightInMeters
     + ", filmed on: " + vid[currVid].flight.equipment;
-  // TODO remove 
-  if (currVid != 0) {
-    description = vid[currVid].title;
-  }
+    
   $('.description .descriptionLink').html(description);
   let a = document.getElementById('mapLink');
   a.href = vid[currVid].flight.locationLink
