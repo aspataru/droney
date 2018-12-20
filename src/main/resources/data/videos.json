@@ -21,7 +21,7 @@
     "flight": {
       "dateAndTime": "2018-10-06T21:04:44+01:00",
       "locationLink": "https://goo.gl/maps/wCoP1zmPb9S2",
-      "averageHeightInMeters": "2",
+      "averageHeightInMeters": "3",
       "equipment": "DJI Mavic Air"
     }
   },
@@ -99,7 +99,7 @@
     "flight": {
       "dateAndTime": "2018-08-23T20:58:36+01:00",
       "locationLink": "https://goo.gl/maps/qe5zQuRuQBE2",
-      "averageHeightInMeters": "60",
+      "averageHeightInMeters": "30",
       "equipment": "DJI Mavic Air"
     }
   },
@@ -202,8 +202,8 @@
     "suggestedQuality": "hd720",
     "flight": {
       "dateAndTime": "2018-08-18T17:17:04+01:00",
-      "locationLink": "https://goo.gl/maps/EzN3ne3ky5o",
-      "averageHeightInMeters": "10",
+      "locationLink": "https://goo.gl/maps/2MZ9DDfaxj12",
+      "averageHeightInMeters": "11",
       "equipment": "DJI Mavic Air"
     }
   },
