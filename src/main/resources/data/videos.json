@@ -52,6 +52,19 @@
     }
   },
   {
+    "videoId": "c5yR_EtI7PA",
+    "title": "Sixt-Fer-à-Cheval",
+    "startSeconds": 7,
+    "endSeconds": 34,
+    "suggestedQuality": "hd720",
+    "flight": {
+      "dateAndTime": "2018-09-23T17:41:54+01:00",
+      "locationLink": "https://goo.gl/maps/CRLYRhzqpFQ2",
+      "averageHeightInMeters": "50",
+      "equipment": "DJI Mavic Air"
+    }
+  },
+  {
     "videoId": "O_uVv0tFN_8",
     "title": "Folegandros",
     "startSeconds": 5,
@@ -61,6 +74,19 @@
       "dateAndTime": "2018-09-13T12:48:16+01:00",
       "locationLink": "https://goo.gl/maps/Zvr4sHww1KB2",
       "averageHeightInMeters": "30",
+      "equipment": "DJI Mavic Air"
+    }
+  },
+  {
+    "videoId": "m0_LGC1sLeQ",
+    "title": "Folegandros",
+    "startSeconds": 2,
+    "endSeconds": 56,
+    "suggestedQuality": "hd720",
+    "flight": {
+      "dateAndTime": "2018-09-13T12:43:50+01:00",
+      "locationLink": "https://goo.gl/maps/Zvr4sHww1KB2",
+      "averageHeightInMeters": "20",
       "equipment": "DJI Mavic Air"
     }
   },

@@ -22,12 +22,12 @@ public class TestVideoController {
 	private MockMvc mockMvc;
 
 	@Test
-	public void firstVideoTitleReturnedByControllerShouldBeVeyrier() throws Exception {
+	public void firstVideoTitleReturnedByControllerExist() throws Exception {
 		this.mockMvc.
 				perform(get("/videos"))
 				.andDo(print())
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$[0].title").value("Veyrier"));
+				.andExpect(jsonPath("$[0].title").exists());
 	}
 
 }
