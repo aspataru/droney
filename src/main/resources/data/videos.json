@@ -1,5 +1,18 @@
 [
   {
+    "videoId": "rYOHmSTblHQ",
+    "title": "La Vattay",
+    "startSeconds": 3,
+    "endSeconds": 50,
+    "suggestedQuality": "hd720",
+    "flight": {
+      "dateAndTime": "2019-02-24T16:26:52+01:00",
+      "locationLink": "https://goo.gl/maps/qhQDYUG9Uvs",
+      "averageHeightInMeters": "30",
+      "equipment": "DJI Mavic Air"
+    }
+  },
+  {
     "videoId": "dXXq0wO5izo",
     "title": "Yvoire",
     "startSeconds": 0,
