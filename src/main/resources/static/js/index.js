@@ -6,6 +6,7 @@ var vid = [
 ];
 var currVid = 0;
 var buffering = false;
+var manualSelect = false;
 
 $(window).on('load', function () {
   retrieveAndSetVideoList();
@@ -71,12 +72,19 @@ function onPlayerStateChange(e) {
   else if (e.data == PAUSED) {
     $('#tv').removeClass('active');
     hideBuffering();
-    if (currVid === vid.length - 1) {
-      currVid = 0;
-    } else {
-      currVid++;
+    if (!manualSelect) {
+      if (currVid === vid.length - 1) {
+        currVid = 0;
+      } else {
+        currVid++;
+      }
+      console.info("Showing flight #" + currVid);
     }
-    console.info("Showing flight #" + currVid);
+    else {
+      // reset the manual select flag to allow rolling the videos after a manual select
+      manualSelect = false;
+      console.info("Going to requested flight #" + currVid);
+    }
     tv.loadVideoById(vid[currVid]);
   }
 }
@@ -89,7 +97,7 @@ function updateVideoData() {
 
   $('.description .descriptionLink').html(description);
   let a = document.getElementById('mapLink');
-  a.href = vid[currVid].flight.locationLink
+  a.href = vid[currVid].flight.locationLink;
 }
 
 function vidRescale() {
@@ -110,6 +118,16 @@ function nextVideo() {
     return;
   }
   // hack :)
+  tv.pauseVideo();
+}
+
+function goToVideo(index) {
+  if (buffering) {
+    return;
+  }
+  currVid = index;
+  console.info("Jumping to video " + index + ", details = " + vid[currVid].title);
+  manualSelect = true;
   tv.pauseVideo();
 }
 
@@ -137,6 +155,25 @@ function retrieveAndSetVideoList() {
     if (json != "") {
       vid = JSON.parse(json);
       console.info("Loaded " + vid.length + " videos!");
+      populateMenu();
     }
   }
+}
+
+function populateMenu() {
+  // should fix bug leading to this method being called twice...
+  if (document.getElementById('menu').childElementCount == 0) {
+    for (i = 0; i < vid.length; i++) {
+      addItemToMenu(i, i + "." + vid[i].title);
+    }
+  }
+}
+
+function addItemToMenu(index, text) {
+  var itemElement = document.createElement('div');
+  itemElement.setAttribute("class", "dropdown-item");
+  itemElement.setAttribute("onclick", "goToVideo(" + index + ")");
+  itemElement.setAttribute("onmouseover", "");
+  itemElement.innerHTML = text;
+  document.getElementById('menu').appendChild(itemElement);
 }
