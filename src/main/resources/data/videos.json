@@ -1,5 +1,44 @@
 [
   {
+    "videoId": "3fgPoA9lPeM",
+    "title": "Verbier",
+    "startSeconds": 0,
+    "endSeconds": 30,
+    "suggestedQuality": "hd720",
+    "flight": {
+      "dateAndTime": "2019-07-20T15:58:48+01:00",
+      "locationLink": "https://goo.gl/maps/WxB4jLQYXPY33dhN7",
+      "averageHeightInMeters": "20",
+      "equipment": "DJI Mavic Air"
+    }
+  },
+  {
+    "videoId": "UKBy4qki0M8",
+    "title": "Saint-Saphorin",
+    "startSeconds": 0,
+    "endSeconds": 43,
+    "suggestedQuality": "hd720",
+    "flight": {
+      "dateAndTime": "2019-04-19T16:10:30+01:00",
+      "locationLink": "https://goo.gl/maps/vZAVZYauRMy2LCMo6",
+      "averageHeightInMeters": "10",
+      "equipment": "DJI Mavic Air"
+    }
+  },
+  {
+    "videoId": "Qd92UlqU8_0",
+    "title": "Oberwald",
+    "startSeconds": 0,
+    "endSeconds": 21,
+    "suggestedQuality": "hd720",
+    "flight": {
+      "dateAndTime": "2019-03-24T10:42:24+01:00",
+      "locationLink": "https://goo.gl/maps/seGtYA7PcL2xdK2B7",
+      "averageHeightInMeters": "30",
+      "equipment": "DJI Mavic Air"
+    }
+  },
+  {
     "videoId": "rYOHmSTblHQ",
     "title": "La Vattay",
     "startSeconds": 3,
@@ -269,6 +308,19 @@
       "dateAndTime": "2018-04-22T20:30:18+01:00",
       "locationLink": "https://goo.gl/maps/E3ziYgkQigH2",
       "averageHeightInMeters": "10",
+      "equipment": "DJI Mavic Air"
+    }
+  },
+  {
+    "videoId": "JrZhA6-8OAI",
+    "title": "Neuchatel",
+    "startSeconds": 0,
+    "endSeconds": 45,
+    "suggestedQuality": "hd720",
+    "flight": {
+      "dateAndTime": "2019-09-04T20:18:42+01:00",
+      "locationLink": "https://goo.gl/maps/WxB4jLQYXPY33dhN7",
+      "averageHeightInMeters": "50",
       "equipment": "DJI Mavic Air"
     }
   }
